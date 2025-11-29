@@ -12,7 +12,7 @@ const Checkout = () => {
     e.preventDefault();
     try {
       // Simulasi: Di real, post ke /api/create-checkout-session
-      const res = await axios.post('http://localhost:5000/api/create-checkout-session', { address }, {
+      const res = await axios.post('https://apps-8wf5.onrender.com/api/create-checkout-session', { address }, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       window.location.href = res.data.url; // Redirect ke Stripe
