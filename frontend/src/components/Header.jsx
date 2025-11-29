@@ -1,4 +1,4 @@
-import from 'react'; // ← TAMBAHKAN INI!
+// HAPUS import React - tidak perlu untuk React 18+
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
