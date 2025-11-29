@@ -2,11 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18n';
 import Header from './components/Header';
-import Home from './pages/Home';
-import Checkout from './pages/Checkout';
-import Admin from './pages/Admin';
-import Login from './pages/Login';
-import Register from './pages/Register';
 
 function App() {
   return (
@@ -14,11 +9,11 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<div><h1>Test Home</h1></div>} />
+          <Route path="/checkout" element={<div><h1>Test Checkout</h1></div>} />
+          <Route path="/admin" element={<div><h1>Test Admin</h1></div>} />
+          <Route path="/login" element={<div><h1>Test Login</h1></div>} />
+          <Route path="/register" element={<div><h1>Test Register</h1></div>} />
         </Routes>
       </Router>
     </I18nextProvider>
