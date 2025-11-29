@@ -13,7 +13,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/register', { email, password, role });
+      const res = await axios.post('https://apps-8wf5.onrender.com/api/register', { email, password, role });
       localStorage.setItem('token', res.data.token);
       navigate('/');
     } catch (err) {
