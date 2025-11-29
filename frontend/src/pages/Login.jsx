@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import React, { useState } from 'react'; // ← TAMBAH INI!
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from 'axios' ;
 
 const Login = () => {
   const { t } = useTranslation();
