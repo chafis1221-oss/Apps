@@ -12,7 +12,7 @@ const Admin = () => {
       alert('Login dulu!');
       return;
     }
-   axios.get('https://apps-8wf5.onrender.com/api/admin/orders ' {
+   axios.get('https://apps-8wf5.onrender.com/api/admin/orders', {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setOrders(res.data))
