@@ -9,7 +9,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/products')
+    axios.get('https://apps-8wf5.onrender.com/api/products')
       .then(res => setProduct(res.data[0]))
       .catch(err => console.error(err));
   }, []);
