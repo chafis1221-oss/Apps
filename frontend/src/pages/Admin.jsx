@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'; // ← TAMBAH IMPORT REACT
+import , { useState, useEffect } from 'react'; // ← TAMBAH IMPORT REACT
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 
