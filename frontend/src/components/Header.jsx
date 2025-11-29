@@ -1,4 +1,4 @@
-import React from 'react'; // ← TAMBAHKAN INI!
+import from 'react'; // ← TAMBAHKAN INI!
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
