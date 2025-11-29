@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react'; // ← TAMBAH IMPORT REACT
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 
 const Home = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation(); // ← TAMBAH i18n di sini
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const Home = () => {
 
   if (!product) return <div className="flex justify-center items-center h-screen text-xl">Loading produk...</div>;
 
-  const langKey = i18n.language === 'en' ? 'en' : 'id';
+  const langKey = i18n.language === 'en' ? 'en' : 'id'; // ← SEKARANG i18n ADA
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
