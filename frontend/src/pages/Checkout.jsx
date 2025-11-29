@@ -1,44 +1,37 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Checkout = () => {
   const { t } = useTranslation();
-  const [address, setAddress] = useState('');
-  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      // Simulasi: Di real, post ke /api/create-checkout-session
-      const res = await axios.post('https://apps-8wf5.onrender.com/api/create-checkout-session', { address }, {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+  const handleCheckout = () => {
+    setLoading(true);
+    axios.post('https://apps-8wf5.onrender.com/api/create-checkout-session')
+      .then(res => {
+        if (res.data.url) {
+          window.location.href = res.data.url;
+        }
+      })
+      .catch(err => {
+        alert('Checkout sementara gagal, coba lagi');
+        setLoading(false);
       });
-      window.location.href = res.data.url; // Redirect ke Stripe
-    } catch (err) {
-      alert('Error: ' + err.response?.data?.error);
-    }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-4">{t('checkout.address')}</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder={t('checkout.address')}
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-            className="w-full p-3 border rounded mb-4"
-            required
-          />
-          <button type="submit" className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">
-            {t('checkout.submit')}
-          </button>
-        </form>
-        <button onClick={() => navigate('/')} className="w-full mt-2 text-gray-500">Cancel</button>
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
+      <div className="bg-white p-10 rounded-xl shadow-lg max-w-md w-full text-center">
+        <h1 className="text-3xl font-bold mb-6">Checkout Sekarang</h1>
+        <p className="text-xl mb-8">Harga: <strong>Rp 299.000</strong></p>
+        <button
+          onClick={handleCheckout}
+          disabled={loading}
+          className="w-full bg-green-600 text-white py-4 rounded-lg text-xl font-bold hover:bg-green-700 disabled:opacity-50"
+        >
+          {loading ? 'Memproses...' : 'Bayar Sekarang'}
+        </button>
       </div>
     </div>
   );
